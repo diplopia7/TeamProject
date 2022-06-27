@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>스토리 선택형 삼국지 TCG</title>
-    <style>
+{% extends 'layout/base.html' %}
+
+{% block title %}스토리 선택형 삼국지 TCG{% endblock %}
+{% load static %}
+{% block style %}
+
+{% endblock %}
+{% block content %}
+<style>
         .button{font-size:20px;
             padding:5px;width:100px;
             margin:10px;
@@ -44,13 +47,12 @@
         #btn7, #btn8{
             display:none
         }
-        
+
     </style>
-</head>
-<body>
-    <audio src="resources/music/oriental peace.ogg" autoplay="autoplay" loop="loop"></audio>
+{% endblock %}
+<audio src="{% static 'resources/music/oriental peace.ogg' %}" autoplay="autoplay" loop="loop"></audio>
     <div id="main_menu" style="position:absolute; z-index:0">
-        <img src="resources/img/background/background2.jpg" width="1280" height="720" alt>
+        <img src="{% static 'resources/img/background/background2.jpg' %}" width="1280" height="720" alt>
         <!-- 자원에 해당되는 모든 내용 저장 -->
         <!-- 직급이 비장군 부터 인맥버튼 활성화
         플레이어가 가지고 있는 내정특기 적용 -->
@@ -61,7 +63,7 @@
             부장 : <span id="officer"> </span>/
             직급 : <span id="general"> </span><br>
             아이템 : <span id="item"> </span>
-           
+
         </div>
         <div id="menu">
             <div>
@@ -89,10 +91,10 @@
             <span id="turnNumber"></span> 턴
         </div>
         <div id="next" class="mainui">
-            <a href="story3.html" target="_self">다음</a>
-        </div>     
+            <a href="/story3" target="_self">다음</a>
+        </div>
     </div>
-    
+{% block jscript %}
     <script>
         let init_gold=1000
         let init_food=100000
@@ -118,7 +120,7 @@
                 btn7.disabled=true
                 btn8.disabled=true
                 next.style.display='block'
-            }            
+            }
         }
         function provisions(){
             init_food+=10000
@@ -135,7 +137,7 @@
                 btn7.disabled=true
                 btn8.disabled=true
                 next.style.display='block'
-            }            
+            }
         }
         function call(){
             init_army+=1000
@@ -152,7 +154,7 @@
                 btn7.disabled=true
                 btn8.disabled=true
                 next.style.display='block'
-            }            
+            }
         }
         function get_officer(){
             init_officer+=1
@@ -169,7 +171,7 @@
                 btn7.disabled=true
                 btn8.disabled=true
                 next.style.display='block'
-            }            
+            }
         }
         function shuffle(array){
             array.sort(()=>Math.random()-0.5)
@@ -190,7 +192,7 @@
             init_turn+=1
             turn+=1
             turnNumber.textContent=init_turn
-            item.textContent=init_item 
+            item.textContent=init_item
             gold.textContent=init_gold
             if (turn>5){
                 btn5.disabled=true
@@ -208,7 +210,7 @@
             }
             if(init_gold<=0){
                 btn5.disalbed=true
-            }      
+            }
         }
 
         function showmarket(){
@@ -240,7 +242,7 @@
                 btn8.disabled=true
                 next.style.display='block'
             }
-            
+
         }
         function foodtomoney(){
             init_gold+=100
@@ -266,7 +268,7 @@
                 btn8.disabled=true
                 next.style.display='block'
             }
-                           
+
         }
 
         if (init_general=='부장'){
@@ -275,7 +277,7 @@
         else if (init_general!='부장'){
             btn4.disabled=false
         }
-        
+
 
         gold=document.getElementById("gold")
         gold.textContent=init_gold
@@ -309,5 +311,5 @@
         btn8=document.getElementById("btn8")
         btn8.addEventListener("click",foodtomoney)
     </script>
-</body>
-</html>
+{% endblock %}
+
