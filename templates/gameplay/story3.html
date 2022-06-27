@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>스토리 선택형 삼국지 TCG</title>
+{% extends 'layout/base.html' %}
+
+{% block title %}스토리 선택형 삼국지 TCG{% endblock %}
+{% load static %}
+{% block style %}
     <style>
         a{
             text-decoration: none;
@@ -28,11 +28,11 @@
             z-index: 1; text-align: center; top:450px; left:630px;
         }
     </style>
-</head>
-<body>
-    <audio src="resources/music/rising the empire.ogg" autoplay="autoplay" loop="loop"></audio>
+{% endblock %}
+{% block content %}
+<audio src="{% static 'resources/music/rising the empire.ogg' %}" autoplay="autoplay" loop="loop"></audio>
     <div id="main_menu" style="position:absolute; z-index:0">
-        <img src="resources\img\background\background3.jpg" width="1280" height="720" alt>
+        <img src="{% static 'resources/img/background/background3.jpg' %}" width="1280" height="720" alt>
         <div id="gamename">
             드디어 전쟁이 시작되었습니다.<br>
             하지만 여몽과 육손의 계책으로 연달아 유비는 패배를 했습니다.<br>
@@ -45,7 +45,13 @@
         <div id="gameplay" class="mainui">
             <a href="전투.html" target="_self">전투 시작</a>
         </div>
-      
+
     </div>
-</body>
-</html>
+{% endblock %}
+
+{% block jscript %}
+    <script>
+
+    </script>
+{% endblock %}
+

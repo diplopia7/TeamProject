@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>스토리 선택형 삼국지 TCG</title>
+{% extends 'layout/base.html' %}
+
+{% block title %}스토리 선택형 삼국지 TCG{% endblock %}
+{% load static %}
+{% block style %}
     <style>
         .button{font-size:20px;
             padding:5px;width:100px;
@@ -12,11 +12,11 @@
             top:150px; left:5px;
         }
     </style>
-</head>
-<body>
-    <audio src="resources/music/oriental peace.ogg" autoplay="autoplay" loop="loop"></audio>
+{% endblock %}
+{% block content %}
+<audio src="{% static 'resources/music/oriental peace.ogg' %}" autoplay="autoplay" loop="loop"></audio>
     <div id="main_menu" style="position:absolute; z-index:0">
-        <img src="resources/img/background/background2.jpg" width="1280" height="720" alt>
+        <img src="{% static 'resources/img/background/background2.jpg' %}" width="1280" height="720" alt>
         <div id="gold"></div>
         <div id="food"></div>
         <div id="army"></div>
@@ -42,13 +42,14 @@
         </div>
         <div id="turn"></div>
     </div>
-    
-    <!-- <script>
-        function click_sfx(){
-        sfx1 = new Audio('resources/sfx/game_start.wav')
-        sfx1.play()
-        }
+{% endblock %}
 
-    </script> -->
-</body>
-</html>
+{% block jscript %}
+{#    <script>#}
+{#        function click_sfx(){#}
+{#        sfx1 = new Audio('resources/sfx/game_start.wav')#}
+{#        sfx1.play()#}
+{#        }#}
+{#    </script>#}
+{% endblock %}
+

@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>스토리 선택형 삼국지 TCG</title>
+
+</head>
+<body>
+
+
+</body>
+</html>
+
+{% extends 'layout/base.html' %}
+
+{% block title %}스토리 선택형 삼국지 TCG{% endblock %}
+{% load static %}
+{% block style %}
     <style>
         a{
             text-decoration: none;
@@ -64,11 +77,11 @@
         }
 
     </style>
-</head>
-<body>
-    <audio src="resources/music/서주대학살.ogg" autoplay="auto"></audio>
+{% endblock %}
+{% block content %}
+<audio src="{% static 'resources/music/서주대학살.ogg' %}" autoplay="auto"></audio>
     <div id="main_menu" style="position:absolute; z-index:-1;">
-        <img src="resources/img/background/background4.jpg" width="1280" height="720" alt>
+        <img src="{% static 'resources/img/background/background4.jpg' %}" width="1280" height="720" alt>
         <div id="story1">
             유비의 전쟁을 말릴 수 있습니다.<br>
             * 설득을 하기 위해서 주사위 100d1을 굴려 기준을 보고, 설득에 성공하거나 실패를 정합니다.<br>
@@ -90,12 +103,15 @@
         </div>
 
         <div id="next1" class="mainui">
-            <a href="story3.html" target="_self">다음</a>
+            <a href="/story3" target="_self">다음</a>
         </div>
         <div id="next2" class="mainui">
-            <a href="내정.html" target="_self">다음</a>
+            <a href="/내정" target="_self">다음</a>
         </div>
     </div>
+{% endblock %}
+
+{% block jscript %}
     <script>
         let result=''
         function roll(){
@@ -140,5 +156,4 @@
         rollbtn=document.getElementById('rollbtn')
         rollbtn.addEventListener('click',roll)
         </script>
-</body>
-</html>
+{% endblock %}
