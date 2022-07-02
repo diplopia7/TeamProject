@@ -1,33 +1,21 @@
 {% extends 'layout/base.html' %}
 
-
-
-
-
-
 {% block title %}member/join{% endblock %}
 
 {% block style %}
-
-        /* 회원가입 폼 배치하기 */
     form { /*border: 1px solid red;*/ width: 350px;
     margin: 150px auto}
 
-    /* 회원가입 폼요소에 여백주기 */
     form div { margin-top: 10px }
 
-    /* 회원가입 폼 라벨에 너비 설정 */
-    /* display = 인라인요소를 블록요소로 변경 */
     form label { display:inline-block;
         width: 120px; text-align: right; font-weight:bold}
 
-    /* 회원가입 폼 버튼 위치 설정 */
     form button:first-child { margin-left: 125px }
 {% endblock %}
 
 {% block content %}
 
-{# 만약, 로그인되어있다면, 회원가입 페이지는 더이상 보이면 안됨 #}
 {% if request.session.userid %}
     <script>location.href='/';</script>
 {% endif %}
