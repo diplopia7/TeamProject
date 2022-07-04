@@ -1,30 +1,46 @@
-header {height: auto;}
-header h1 {margin: 0; float: left}
-header img {width: 120px; padding: 7px}
-/*header a {font-weight: bold}*/
-/*#wrapper a:link {color: black; text-decoration:none}*/
-/*!*#wrapper a:visited{color: black; text-decoration:underline}*!*/
-/*#wrapper a:hover {color: orangered; text-decoration:none}*/
-/*#wrapper a:active {color: orangered; text-decoration:none }*/
+header h1 {
+    margin-bottom: 45px;
+}
 
-#qmenu {list-style: none; padding: 0;
-        float: right; margin-right: 15px;}
-        /*border: 1px solid black}*/
-#qmenu li { display: inline-block}
+header ul {
+    list-style: none;
+    padding: 0;
+}
 
-#qmenu li:after { content: ' |'}
-#qmenu li:last-child:after { content: ' ' }
+header nav li {
+    display: inline-block;
+    width: 19%;
+    text-align: center;
+}
 
-/*#qmenu a:visited{color:black}*/
+header hr {
+    background: black;
+    height: 1px;
+}
 
-/*header div {float: left; margin-top: 75px}*/
+header a:link {
+    color: black;
+    text-decoration: none;
+}
 
-nav {background: silver; padding: 5px 15px; clear: both;}
+header a:visited {
+    color: black;
+    text-decoration: none;
+}
 
-#mmenu {padding:3px;}
-/*#mmenu a{color:black}*/
-#mmenu li { font-size: 30px; text-align: center; display: inline-block;
-            margin-left: 40px;}
-#wrapper {height:auto}
-#main {min-height:840px}
-footer{height: auto;text-align: center; padding-bottom: 10px;}
+header a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+header a:active {
+    color: indigo;
+    text-decoration: underline;
+}
+
+footer span {
+    display: block;
+    text-align: center;
+}
+#main {
+}

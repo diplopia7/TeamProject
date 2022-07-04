@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static '/css/project.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+<div id="wrap">
+    {% include 'layout/header.html' %}
+    <div id="main">
+        {% block content %} {% endblock %}
+    </div>
+    {% include 'layout/footer.html' %}
+</div>
+{% block jscript %} {% endblock %}
+</body>
+</html>

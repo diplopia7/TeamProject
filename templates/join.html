@@ -1,27 +1,21 @@
-{% extends 'project.html' %}
-{% block title %}회원가입{% endblock %}
+{% extends 'layout/base.html' %}
+
+{% block title %}member/join{% endblock %}
 
 {% block style %}
-    <style>
-        form { width: 350px; margin: 150px auto}
+    form { /*border: 1px solid red;*/ width: 350px;
+    margin: 150px auto}
 
-        form div { margin-top: 10px }
+    form div { margin-top: 10px }
 
-        form label { display:inline-block; width: 120px; text-align: right; font-weight:bold}
+    form label { display:inline-block;
+        width: 120px; text-align: right; font-weight:bold}
 
-        form button:first-child { margin-left: 125px }
-
-        h2 {margin-left: 55px}
-
-        .error{position:relative; left:150px; color:red; font-weight: bold}
-
-        #wrapper a {font-weight: bold; text-decoration: none;
-        color: black}
-        #wrapper a:hover{color:orangered}
-    </style>
+    form button:first-child { margin-left: 125px }
 {% endblock %}
 
 {% block content %}
+
 {% if request.session.userid %}
     <script>location.href='/';</script>
 {% endif %}
@@ -29,35 +23,28 @@
 <h2>회원가입</h2>
 <form name="joinfrm" method="post" id="joinfrm">
     {# django built-in template filter #}
+    <div style="color: red">{{ error|addslashes }}</div>
 
     {% csrf_token %} {# 동일 출처origin 확인용 쿠키 생성 #}
     <div><label for="userid">아이디</label>
     <input type="text" name="userid" id="userid" value="{{ form.userid }}">
-    <div class="error">{{ error1 }}</div>
-    <div class="error">{{ duplicate }}</div>
     </div>
-
 
     <div><label for="passwd">비밀번호</label>
-    <input type="password" name="passwd" id="passwd" value="{{ form.passwd }}">
-    <div class="error">{{ error2 }}</div>
-    </div>
+    <input type="password" name="passwd" id="passwd" value="{{ form.passwd }}"></div>
 
     <div><label for="repasswd">비밀번호 확인</label>
     <input type="password" name="repasswd" id="repasswd" ></div>
-    <div class="error">{{ error5 }}</div>
 
     <div><label for="name">이름</label>
     <input type="text" name="name" id="name" value="{{ form.name }}"></div>
-    <div class="error">{{ error3 }}</div>
 
     <div><label for="email">이메일</label>
-    <input type="email" name="email" id="email" value="{{ form.email }}"></div>
-    <div class="error">{{ error4 }}</div>
+    <input type="text" name="email" id="email" value="{{ form.email }}"></div>
 
     <div><!--<label></label>-->
-     <button type="submit" id="joinfrm" class="btn btn-primary">입력완료</button>
-     <button type="reset" class="btn btn-danger">다시입력</button>
+     <button type="submit" id="joinfrm">입력완료</button>
+     <button type="reset">다시입력</button>
     </div>
 </form>
 {% endblock %}
