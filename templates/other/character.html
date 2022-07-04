@@ -1,17 +1,15 @@
-{% extends 'project.html' %}
-{% block style %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스토리 선택형 삼국지 TCG</title>
     <style>
-        #wrapper a {font-weight: bold; text-decoration: none;
-                    color: black}
-        #wrapper a:hover{color:orangered}
-
-        #main_menu{
-            position: relative; left:200px;
-            width:1500px;
-            height:840px;
-            background-color: black;
-            color: white;
-            font-size: 30px;
+        a{
+            text-decoration: none;
+            color: white
+        }
+        a:hover {
+            color:orange;
         }
         .mainui {
             position:absolute; z-index: 1;
@@ -24,13 +22,18 @@
             position:absolute; z-index:1;
             right:20px; bottom:30px;display: none;
         }
-        #next a{color:white; text-decoration: none}
-        #next a:hover{color:orange}
-
+        #main_menu{
+            width:1280px; height:720px;
+            border:1px solid black;
+            background-color: black;
+            color: white;
+            z-index:1; font-size: 30px;
+        }
         #stat{
             position:absolute; left:50px; top:20px;
             border:1px solid white; padding:20px;
             text-align: center;
+
         }
         button{
             padding:10px; font-size: 20px; margin-top:15px;
@@ -54,119 +57,79 @@
             position:absolute; z-index:1;
             right:20px;
         }
-    </style>
-{% endblock %}
 
-{% block content %}
-    <div id="main_menu">
+        
+            
+    </style>
+</head>
+<body>
+    <div id="main_menu" style="position:absolute; z-index:-1;">
         <!-- stat, 내정특기, 전투특기, 전술에 해당 하는 내용 모두 저장 -->
-        <form id="chrfrm" name="chrfrm" method="post">
-        {% csrf_token %}
         <div id="stat">
             <div>통솔
-                <span id="통솔">{{ command }}</span>
-                <input type="hidden" id="command" name="command">
+                <span id="통솔"></span>            
             </div>
             <div>무력
-                <span id="무력">{{ power }}</span>
-                <input type="hidden" id="power" name="power">
+                <span id="무력"></span>
             </div>
             <div>지력
-                <span id="지력">{{ inteli }}</span>
-                <input type="hidden" id="inteli" name="inteli">
+                <span id="지력"></span>
             </div>
-            <div>정치
-                <span id="정치">{{ politics }}</span>
-                <input type="hidden" id="politics" name="politics">
+            <div>정치 
+                <span id="정치"></span>
             </div>
             <div>
                 <button id="statbtn" type="button">장수 스탯 정하기</button>
             </div>
         </div>
+        
         <div id="내정특기">
-            <div id="trait1">{{ innertrait }}</div>
-            <input type="hidden" id="innertrait" name="innertrait">
+            <div id="trait1"></div>            
             <div>
                 <button id="btn2" type="button">내정특기</button>
             </div>
         </div>
         <div id="전투특기">
-            <div id="trait2">{{ fighttrait }}</div>
-            <input type="hidden" id="fighttrait" name="fighttrait">
+            <div id="trait2"></div>            
             <div>
                 <button id="btn3" type="button">전투특기</button>
             </div>
         </div>
         <div id="전술">
-            <div id="trait3">{{ skill }}</div>
-            <input type="hidden" id="skill" name="skill">
+            <div id="trait3"></div>            
             <div>
                 <button id="btn4" type="button">전술</button>
             </div>
         </div>
         <div id="장수" class="img1"></div>
         <div id="next" class="mainui">
-            <a href="/story2">다음</a>
-        </div>
-        </form>
+            <a href="story2.html" target="_self">다음</a>
+        </div>        
     </div>
-{#    <script>#}
-{#    function submmitFunction(event){#}
-{#    event.preventDefault();#}
-{#}#}
-{#statbtn = document.getElementById('statbtn')#}
-{#    statbtn.addEventListener('submit',submmitFunction)#}
-{#    </script>#}
-{#<script>#}
-{#    statbtn=document.querySelector('#statbtn')#}
-{#    statbtn.addEventListener('submit',()=>{#}
-{#        e.preventDefault()#}
-{#    })#}
-{#</script>#}
-{#<script>#}
-{#function noEvent(event){#}
-{#    if(event.keyCode==116){#}
-{#        alert('새로고침을 할 수 없습니다.')#}
-{#        event.keyCode=2#}
-{#        return false#}
-{#    } else if(event.ctrlKey#}
-{#        &&(event.keyCode == 78 || event.keyCode == 82)){#}
-{#        return false#}
-{#    }#}
-{#}#}
-{#document.onkeydown=noEvent#}
-</script>
+
     <script>
-        function stat(event){
-            통솔=document.getElementById('통솔')
-            무력=document.getElementById('무력')
-            지력=document.getElementById('지력')
-            정치=document.getElementById('정치')
-
-            rand1=parseInt(Math.random()*100+1)
-            rand2=parseInt(Math.random()*100+1)
-            rand3=parseInt(Math.random()*100+1)
-            rand4=parseInt(Math.random()*100+1)
-
-            통솔.textContent=rand1
-            document.getElementById('command').value=rand1
-            무력.textContent=rand2
-            document.getElementById('power').value=rand2
-            지력.textContent=rand3
-            document.getElementById('inteli').value=rand3
-            정치.textContent=rand4
-            document.getElementById('politics').value=rand4
+        function stat(){
+            l=[]
+            통솔.textContent=parseInt(Math.random()*100+1)
+            무력.textContent=parseInt(Math.random()*100+1)
+            지력.textContent=parseInt(Math.random()*100+1)
+            정치.textContent=parseInt(Math.random()*100+1)
             statbtn.disabled=true
             if (statbtn.disabled==true && btn2.disabled==true
                 &&btn3.disabled==true && btn4.disabled==true) {
                 next.style.display='block'
             }
-            event.preventDefault()
         }
-
-
+        통솔=document.getElementById('통솔')
+        무력=document.getElementById('무력')
+        지력=document.getElementById('지력')
+        정치=document.getElementById('정치')
+        통솔.textContent=0
+        무력.textContent=0
+        지력.textContent=0
+        정치.textContent=0
         statbtn=document.getElementById('statbtn')
-        statbtn.addEventListener('click',stat)
+        statbtn.addEventListener('click',stat)                  
     </script>
     <script>
         function shuffle(array){
@@ -178,15 +141,15 @@
             shuffle(trait)
             btn2.disabled=true
             trait1.textContent=trait[0]
-            document.getElementById('innertrait').value=trait[0]
             if (statbtn.disabled==true && btn2.disabled==true
                 &&btn3.disabled==true && btn4.disabled==true) {
                 next.style.display='block'
             }
         }
         trait1=document.getElementById('trait1')
+        trait1.textContent='없음'
         btn2=document.getElementById('btn2')
-        btn2.addEventListener('click',내정)
+        btn2.addEventListener('click',내정)                
     </script>
     <script>
         function 전투(){
@@ -194,15 +157,15 @@
             shuffle(trait)
             btn3.disabled=true
             trait2.textContent=trait[0]
-            document.getElementById('fighttrait').value=trait[0]
             if (statbtn.disabled==true && btn2.disabled==true
                 &&btn3.disabled==true && btn4.disabled==true) {
                 next.style.display='block'
             }
         }
         trait2=document.getElementById('trait2')
+        trait2.textContent='없음'
         btn3=document.getElementById('btn3')
-        btn3.addEventListener('click',전투)
+        btn3.addEventListener('click',전투)                  
     </script>
     <script>
         function 전술(){
@@ -212,34 +175,26 @@
             shuffle(trait)
             btn4.disabled=true
             trait3.textContent=trait[0]
-            document.getElementById('skill').value=trait[0]
             if (statbtn.disabled==true && btn2.disabled==true
                 &&btn3.disabled==true && btn4.disabled==true) {
                 next.style.display='block'
             }
         }
         trait3=document.getElementById('trait3')
+        trait3.textContent='없음'
         btn4=document.getElementById('btn4')
-        btn4.addEventListener('click',전술)
+        btn4.addEventListener('click',전술)                  
     </script>
     <script>
-        function shuffle(array){
-          array.sort(()=>Math.random()-0.5)
-        }
-        illust=['/static/resources/img/character/가후-1.png','/static/resources/img/character/강유-1.png','/static/resources/img/character/곽가-1.png','/static/resources/img/character/관우-1.png',
-        '/static/resources/img/character/노숙-1.png','/static/resources/img/character/대교-1.png','/static/resources/img/character/등애.png','/static/resources/img/character/문앙-1.png',
-        '/static/resources/img/character/법정-1.png','/static/resources/img/character/사마의-1.png']
+        illust=['resources/img/character/가후-1.png','resources/img/character/강유-1.png','resources/img/character/곽가-1.png','resources/img/character/관우-1.png',
+        'resources/img/character/노숙-1.png','resources/img/character/대교-1.png','resources/img/character/등애.png','resources/img/character/문앙-1.png',
+        'resources/img/character/법정-1.png','resources/img/character/사마의-1.png']
         shuffle(illust)
         img = document.createElement('img')
         img.src=illust[0]
         src=document.getElementById('장수')
         src.appendChild(img)
     </script>
-    <script>
-    function chk_form(){
-        document.getElementById('chrfrm').submit()
-    }
-    next=document.getElementById('next')
-    next.addEventListener('click',chk_form)
-    </script>
-{% endblock %}
+    
+</body>
+</html>
