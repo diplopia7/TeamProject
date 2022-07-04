@@ -5,62 +5,64 @@
     <title>레이아웃1</title>
     <link rel="stylesheet" href="/static/css/vendor/bs5/bootstrap.min.css">
     <style>
+        header {background-image:url('/static/img/background.jpg'); }
+        header a {font-weight: bold; }
 
-        header {height: 80px}
-        header h1 {margin: 0; float: left}
-        header img {width: 120px; padding: 7px}
-        header a {font-weight: bold}
         a:link {color: black; text-decoration:none}
         a:visited{color: black; text-decoration:underline}
         a:hover {color: orangered; text-decoration:none}
         a:active {color: orangered; text-decoration:none }
 
-        #qmenu {list-style: none; padding: 0;
-                float: right; margin-right: 15px}
-        #qmenu li { display: inline-block}
+        #gamestart { list-style:none; font-size:40px; position:absolute; margin-left: 660px; margin-top: 15px }
+        #gamestart img { width:200px; height: 100px; }
+        #logo {width: 500px; height:100px; float:left; margin-top:10px }
+        #qmenu {list-style: none; padding: 3px; position:absolute;
+                float: right; margin-left: 1300px; margin-top: 10px}
+        #qmenu li {  display: inline-block; }
+        #qmenu a { color:white; }
 
-        #qmenu li:after { content: ' |'}
-        #qmenu li:last-child:after { content: '' }
+        nav { width: 100%; background: silver; padding: 5px 15px; clear: both; margin-top: 15px; display:inline-block}
 
-        header div {float: left; margin-top: 75px}
+        #mmenu {list-style: none; font-size: 35px; padding:3px;   }
+        #mmenu li {display: inline-block; margin-left:280px;}
 
-        nav {background: silver; padding: 5px 15px; clear: both; margin-top: -5px}
-            {width: 250px; border: 3px solid gray}
-        nav select {width: 150px; border: 3px solid gray ; text-decoration: underline}
-        nav button {width: 100px; background: gray; border: none; padding: 5px; color: white;
-                    border-radius: 5px}
-        #mmenu {padding:3px;}
-        #mmenu li { font-size: 30px; text-align: center; display: inline-block;
-                    margin-left: 40px }
+        video { max-width: 100%; display: block; }
     </style>
 
 </head>
 
 <body>
-    <div id="wrapper">
-         <header>
-         <h1><img src="/static/img/sword.jpg" alt="logo"></h1>
-            <ul id="qmenu">
-                <li><a href="/login">로그인</a></li>
-                <li><a href="/">로그아웃</a></li>
-                <li><a href="/join">회원가입</a></li>
+    <header class="tmenu">
+        <div class="wrapper">
+             <h1><img id='logo' src="/static/img/logo.png" alt="logo"></h1>
+                 <div id="gamestart" >
+                    <a href="/"><img src="/static/img/gamestart.png"></a>
+                 </div>
+                 <ul id="qmenu">
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/">로그아웃</a></li>
+                    <li><a href="/join">회원가입</a></li>
+                 </ul>
+        </div>
 
 
-            </ul>
         <nav>
         <ul id="mmenu">
             <li><a href="/">Home</a></li>
-            <li><a href="/">게임소개</a></li>
+            <li><a href="/game_info">게임소개</a></li>
             <li><a href="/pay">상점</a></li>
-            <li><a href="/">회원정보</a></li>
-            <li><a href="/">게임시작</a></li>
+
         </ul>
         </nav>
-        </header>
-    </div>
+    </header>
     <div id="main">
         {% block content %} {% endblock %}
     </div>
+    <body>
+      <video autoplay controls loop muted>
+          <source src="/static/video/트레일러1.mp4" type="video/mp4">
+      </video>
+    </body>
     <footer>
 
     </footer>
